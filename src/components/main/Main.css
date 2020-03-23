@@ -1,0 +1,33 @@
+.main {
+    background-color: #e2f3f5;
+    height: 500px;
+}
+
+.main .bars {
+    display: flex;
+    justify-content: center;
+}
+
+.main .bar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main .display-bar {
+    width: 20px;
+    margin: 0px 1px;
+    background-color: #6ba4ee;
+    border: 1px solid #475bc2;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.main .display-size {
+    color: black;
+    margin-top: 3px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.6rem;
+}
