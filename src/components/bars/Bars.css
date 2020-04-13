@@ -1,0 +1,27 @@
+.bars {
+    display: flex;
+    justify-content: center;
+}
+
+.bars .bar {
+    margin: 0px 1px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bars .display-bar {
+    width: 20px;
+    background-color: #6ba4ee;
+    border: 1px solid #475bc2;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.bars .display-size {
+    margin-top: 3px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.8rem;
+}
