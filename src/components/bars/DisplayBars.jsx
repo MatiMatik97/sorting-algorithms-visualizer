@@ -10,8 +10,11 @@ const DisplayBars = ({ bars }) => {
 
         return (
           <div className="bar" key={bar.id}>
-            <div className="display-bar" style={barStyles}></div>
-            <span className="display-size">{bar.size}</span>
+            <div
+              className={`display-bar bar-${bar.id}`}
+              style={barStyles}
+            ></div>
+            <span className={`display-size text-${bar.id}`}>{bar.size}</span>
           </div>
         );
       })}

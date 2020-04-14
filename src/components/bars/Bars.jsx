@@ -2,6 +2,8 @@ import React, { useEffect, useState, useCallback, useContext } from "react";
 import "./Bars.css";
 import DisplayBars from "./DisplayBars";
 import { BarsAmountContext } from "../../App";
+import { IsSortingContext } from "../../App";
+import Tester from "../../algorithms/Tester";
 
 export const resizeHandler = (barsAmount) => {
   const windowWidth = window.innerWidth;
@@ -30,6 +32,7 @@ export const resizeHandler = (barsAmount) => {
 
 const Bars = () => {
   const { barsAmount } = useContext(BarsAmountContext);
+  const { isSorting, setIsSorting } = useContext(IsSortingContext);
   const [bars, setBars] = useState([]);
 
   const MIN_HEIGHT = 20;
@@ -62,6 +65,34 @@ const Bars = () => {
       window.removeEventListener("resize", () => resizeHandler(barsAmount));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   });
+
+  const swap = (arr, i, j) => {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  };
+
+  useEffect(() => {
+    if (isSorting) {
+      // Tester.test(bars);
+
+      for (let i = 0; i < bars.length - 1; i++) {
+        setTimeout(() => {
+          setBars((bars) => {
+            // Copy the current array
+            const newBars = [...bars];
+            // Do the swap
+            swap(newBars, i, i + 1);
+            // Set the state by returning the update
+            return newBars;
+          });
+        }, 2000 * (i + 1));
+      }
+
+      setIsSorting(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSorting]);
 
   return <DisplayBars bars={bars} />;
 };

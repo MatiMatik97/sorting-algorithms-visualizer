@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
 import { BarsAmountContext } from "../../App";
 import { IsSortingContext } from "../../App";
@@ -6,7 +6,7 @@ import { resizeHandler } from "../bars/Bars";
 
 const Navbar = () => {
   const { barsAmount, setBarsAmount } = useContext(BarsAmountContext);
-  const { isSorting } = useContext(IsSortingContext);
+  const { isSorting, setIsSorting } = useContext(IsSortingContext);
 
   return (
     <div className="navbar">
@@ -25,7 +25,7 @@ const Navbar = () => {
             resizeHandler(barsAmount);
           }}
         />
-        <button className="sort-button" onClick={() => console.log("SORT")}>
+        <button className="sort-button" onClick={() => setIsSorting(true)}>
           Sort
         </button>
       </div>
