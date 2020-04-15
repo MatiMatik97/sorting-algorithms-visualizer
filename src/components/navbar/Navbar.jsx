@@ -23,13 +23,19 @@ const Navbar = () => {
           className={`slider ${sliderClassName}`}
           disabled={isSorting}
           onChange={(e) => {
-            setBarsAmount(e.target.value);
-            resizeHandler(barsAmount);
+            if (!isSorting) {
+              setBarsAmount(e.target.value);
+              resizeHandler(barsAmount);
+            }
           }}
         />
         <button
           className={`sort-button ${sortButtonClassName}`}
-          onClick={() => setIsSorting(true)}
+          onClick={() => {
+            if (!isSorting) {
+              setIsSorting(true);
+            }
+          }}
         >
           Sort
         </button>

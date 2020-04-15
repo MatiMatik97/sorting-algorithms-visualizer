@@ -1,14 +1,14 @@
 const Tester = () => { }
 
-Tester.test = (bars, setBars, setIsSorting) => {
+Tester.test = (bars, setBars) => {
     const swap = (arr, i, j) => {
-        let temp = arr[i];
+        const temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     };
 
     const STEP_TIME = 200;
-    let isSortingTime = 0;
+    let sortingTime = 0;
 
     for (let i = 0; i < bars.length - 1; i++) {
         setTimeout(() => {
@@ -18,12 +18,10 @@ Tester.test = (bars, setBars, setIsSorting) => {
                 return newBars;
             });
         }, STEP_TIME * (i + 1));
-        isSortingTime += STEP_TIME;
+        sortingTime += STEP_TIME;
     }
 
-    setTimeout(() => {
-        setIsSorting(false);
-    }, isSortingTime);
+    return sortingTime;
 }
 
 export default Tester

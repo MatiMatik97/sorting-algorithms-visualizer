@@ -68,7 +68,11 @@ const Bars = () => {
 
   useEffect(() => {
     if (isSorting) {
-      Tester.test(bars, setBars, setIsSorting);
+      const sortingTime = Tester.test(bars, setBars);
+
+      setTimeout(() => {
+        setIsSorting(false);
+      }, sortingTime);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSorting]);
