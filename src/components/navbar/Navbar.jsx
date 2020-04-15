@@ -8,6 +8,9 @@ const Navbar = () => {
   const { barsAmount, setBarsAmount } = useContext(BarsAmountContext);
   const { isSorting, setIsSorting } = useContext(IsSortingContext);
 
+  const sliderClassName = isSorting ? "slider-disabled" : "";
+  const sortButtonClassName = isSorting ? "sort-button-disabled" : "";
+
   return (
     <div className="navbar">
       <h2>Sorting Algorithms Visualizer</h2>
@@ -17,15 +20,17 @@ const Navbar = () => {
           min="5"
           max="40"
           value={barsAmount}
-          className="slider"
-          id="slider"
+          className={`slider ${sliderClassName}`}
           disabled={isSorting}
           onChange={(e) => {
             setBarsAmount(e.target.value);
             resizeHandler(barsAmount);
           }}
         />
-        <button className="sort-button" onClick={() => setIsSorting(true)}>
+        <button
+          className={`sort-button ${sortButtonClassName}`}
+          onClick={() => setIsSorting(true)}
+        >
           Sort
         </button>
       </div>

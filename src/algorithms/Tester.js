@@ -1,29 +1,29 @@
 const Tester = () => { }
 
-Tester.test = (bars) => {
+Tester.test = (bars, setBars, setIsSorting) => {
     const swap = (arr, i, j) => {
         let temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-    }
+    };
 
-    const bgColor = '#6ba4ee';
+    const STEP_TIME = 200;
+    let isSortingTime = 0;
 
     for (let i = 0; i < bars.length - 1; i++) {
-        const bar1 = document.querySelector(`.bar-${bars[i].id}`)
-        const bar2 = document.querySelector(`.bar-${bars[i + 1].id}`)
-
         setTimeout(() => {
-            bar1.style.backgroundColor = "red";
-            bar2.style.backgroundColor = "red";
-            swap(bars, i, i + 1);
-        }, i * 500);
-
-        setTimeout(() => {
-            bar2.style.backgroundColor = bgColor;
-            bar1.style.backgroundColor = bgColor;
-        }, (i + 1) * 500);
+            setBars((bars) => {
+                const newBars = [...bars];
+                swap(newBars, i, i + 1);
+                return newBars;
+            });
+        }, STEP_TIME * (i + 1));
+        isSortingTime += STEP_TIME;
     }
+
+    setTimeout(() => {
+        setIsSorting(false);
+    }, isSortingTime);
 }
 
 export default Tester
