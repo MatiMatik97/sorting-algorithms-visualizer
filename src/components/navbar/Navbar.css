@@ -65,7 +65,7 @@
 
 /* ------- SLIDER SORTING ------- */
 
-.slider:hover {
+.slider-disabled:hover {
     cursor: not-allowed;
 }
 
