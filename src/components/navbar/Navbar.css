@@ -1,3 +1,9 @@
+:root {
+    --primary-sorting-bg-color: #16b8e9;
+    --primary-sorting-bg-hover-color: #0ac1f8;
+    --primary-not-sorting-bg-color: #bbbbbb;
+}
+
 .navbar {
     background-color: #17b978;
     padding: 10px;
@@ -21,7 +27,7 @@
     -webkit-appearance: none;
     height: 10px;
     border-radius: 5px;
-    background: #e2f3f5;
+    background-color: #e2f3f5;
     outline: none;
 }
 
@@ -32,14 +38,14 @@
     height: 20px;
     border: 0;
     border-radius: 50%;
-    background-color: #16b8e9;
+    background-color: var(--primary-sorting-bg-color);
     border: 1px solid #2c2c2c80;
     cursor: pointer;
     transition: background-color .2s ease-in-out;
 }
 
 .slider::-webkit-slider-thumb:hover {
-    background-color: #0ac1f8;
+    background-color: var(--primary-sorting-bg-hover-color);
 }
 
 .slider::-moz-range-thumb {
@@ -47,34 +53,38 @@
     height: 20px;
     border: 0;
     border-radius: 50%;
-    background-color: #16b8e9;
+    background-color: var(--primary-sorting-bg-color);
     border: 1px solid #2c2c2c80;
     cursor: pointer;
     transition: background-color .2s ease-in-out;
 }
 
 .slider::-moz-range-thumb:hover {
-    background-color: #0ac1f8;
+    background-color: var(--primary-sorting-bg-hover-color);
 }
 
 /* ------- SLIDER SORTING ------- */
 
+.slider:hover {
+    cursor: not-allowed;
+}
+
 .slider-disabled::-webkit-slider-thumb {
-    background-color: lightgray;
+    background-color: var(--primary-not-sorting-bg-color);
 }
 
 .slider-disabled::-webkit-slider-thumb:hover {
     cursor: not-allowed;
-    background-color: lightgray;
+    background-color: var(--primary-not-sorting-bg-color);
 }
 
 .slider-disabled::-moz-range-thumb {
-    background-color: #16b8e9;
+    background-color: var(--primary-sorting-bg-color);
 }
 
 .slider-disabled::-moz-range-thumb:hover {
     cursor: not-allowed;
-    background-color: lightgray;
+    background-color: var(--primary-not-sorting-bg-color);
 }
 
 /* ------- SORT BUTTON NOT SORTING ------- */
@@ -84,23 +94,23 @@
     outline: none;
     border: 1px solid #2c2c2c80;
     border-radius: 5px;
-    background-color: #16b8e9;
+    background-color: var(--primary-sorting-bg-color);
     color: #3a3a3a;
     transition: background-color .2s ease-in-out;
 }
 
 .navbar .sort-button:hover {
     cursor: pointer;
-    background-color: #0ac1f8;
+    background-color: var(--primary-sorting-bg-hover-color);
 }
 
 /* ------- SORT BUTTON NOT SORTING ------- */
 
 .navbar .sort-button-disabled {
-    background-color: lightgray;
+    background-color: var(--primary-not-sorting-bg-color);
 }
 
 .navbar .sort-button-disabled:hover {
     cursor: not-allowed;
-    background-color: lightgray;
+    background-color: var(--primary-not-sorting-bg-color);
 }
