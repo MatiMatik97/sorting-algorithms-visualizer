@@ -7,7 +7,7 @@ export const BarsAmountContext = createContext();
 export const IsSortingContext = createContext();
 
 const App = () => {
-  const [barsAmount, setBarsAmount] = useState(10);
+  const [barsAmount, setBarsAmount] = useState(5);
   const [isSorting, setIsSorting] = useState(false);
 
   return (

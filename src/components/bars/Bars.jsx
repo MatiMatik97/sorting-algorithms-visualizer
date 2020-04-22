@@ -3,7 +3,7 @@ import "./Bars.css";
 import DisplayBars from "./DisplayBars";
 import { BarsAmountContext } from "../../App";
 import { IsSortingContext } from "../../App";
-import Tester from "../../algorithms/Tester";
+import BubbleSort from "../../algorithms/BubbleSort";
 
 export const resizeHandler = (barsAmount) => {
   const windowWidth = window.innerWidth;
@@ -45,7 +45,7 @@ const Bars = () => {
   const generateArray = (length) => {
     const arr = [];
     for (let i = 0; i < length; i++) {
-      arr.push({ id: i + 1, size: generateNumber(MIN_HEIGHT, MAX_HEIGHT) });
+      arr.push({ id: i, size: generateNumber(MIN_HEIGHT, MAX_HEIGHT) });
     }
     setBars(arr);
   };
@@ -68,7 +68,7 @@ const Bars = () => {
 
   useEffect(() => {
     if (isSorting) {
-      const sortingTime = Tester.test(bars, setBars);
+      const sortingTime = BubbleSort.init(bars, setBars);
 
       setTimeout(() => {
         setIsSorting(false);

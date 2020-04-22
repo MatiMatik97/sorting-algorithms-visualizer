@@ -31,6 +31,10 @@
     outline: none;
 }
 
+.slider:hover {
+    cursor: pointer;
+}
+
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
