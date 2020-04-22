@@ -1,5 +1,11 @@
-import { BARS_BASIC_BG_COLOR, BARS_DONE_BG_COLOR } from './colors';
-import { STEP_TIME, DONE_TIME } from './times';
+export const
+    BARS_BASIC_BG_COLOR = "#6ba4ee",
+    BARS_COPMARE_BG_COLOR = "#df1010",
+    BARS_DONE_BG_COLOR = "#3da827";
+
+export const
+    STEP_TIME = 25,
+    DONE_TIME = 200;
 
 export const swapInArray = (arr, i, j) => {
     const temp = arr[i];

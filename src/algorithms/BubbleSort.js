@@ -1,6 +1,8 @@
-import { BARS_BASIC_BG_COLOR, BARS_COPMARE_BG_COLOR } from '../helpers/colors';
-import { STEP_TIME, DONE_TIME } from '../helpers/times';
-import { swapInArray, finishAnimations } from '../helpers/helpers';
+import {
+    BARS_BASIC_BG_COLOR, BARS_COPMARE_BG_COLOR,
+    STEP_TIME, DONE_TIME,
+    swapInArray, finishAnimations
+} from '../helpers';
 
 const BubbleSort = () => { }
 
