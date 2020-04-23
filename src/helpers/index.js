@@ -4,8 +4,8 @@ export const
     BARS_DONE_BG_COLOR = "#3da827";
 
 export const
-    STEP_TIME = 25,
-    DONE_TIME = 200;
+    DEFAULT_STEP_TIME = 400,
+    DONE_TIME = 300;
 
 export const swapInArray = (arr, i, j) => {
     const temp = arr[i];
@@ -13,7 +13,7 @@ export const swapInArray = (arr, i, j) => {
     arr[j] = temp;
 };
 
-export const finishAnimations = (setBars, barsCopy, animations) => {
+export const finishAnimations = (STEP_TIME, animations) => {
     setTimeout(() => {
         const displayBarEls = [...document.querySelectorAll('.display-bar')];
 
@@ -31,6 +31,5 @@ export const finishAnimations = (setBars, barsCopy, animations) => {
             return displayBar;
         });
 
-        setBars(barsCopy);
     }, (animations.length + 1) * STEP_TIME + DONE_TIME);
 }

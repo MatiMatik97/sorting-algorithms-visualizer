@@ -1,6 +1,6 @@
 import {
     BARS_BASIC_BG_COLOR, BARS_COPMARE_BG_COLOR,
-    STEP_TIME, DONE_TIME,
+    DEFAULT_STEP_TIME, DONE_TIME,
     swapInArray, finishAnimations
 } from '../helpers';
 
@@ -30,10 +30,11 @@ BubbleSort.init = (bars, setBars) => {
         }
     }
 
-    return BubbleSort.animate(setBars, barsCopy, animations);
+    return BubbleSort.animate(bars.length, setBars, animations);
 }
 
-BubbleSort.animate = (setBars, barsCopy, animations) => {
+BubbleSort.animate = (barsAmount, setBars, animations) => {
+    const STEP_TIME = Math.round(DEFAULT_STEP_TIME / barsAmount);
     let sortingTime = 0;
 
     for (let anim = 0; anim < animations.length; anim++) {
@@ -63,7 +64,7 @@ BubbleSort.animate = (setBars, barsCopy, animations) => {
         sortingTime += STEP_TIME;
     }
 
-    finishAnimations(setBars, barsCopy, animations);
+    finishAnimations(STEP_TIME, animations);
 
     return sortingTime + STEP_TIME + DONE_TIME;
 }

@@ -68,10 +68,15 @@ const Bars = () => {
 
   useEffect(() => {
     if (isSorting) {
-      const sortingTime = BubbleSort.init(bars, setBars);
+      const sortButtonEl = document.querySelector(".sort-button");
+      sortButtonEl.innerHTML = "Sorting";
+
+      let sortingTime = 0;
+      sortingTime = BubbleSort.init(bars, setBars);
 
       setTimeout(() => {
         setIsSorting(false);
+        sortButtonEl.innerHTML = "Sort";
       }, sortingTime);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
