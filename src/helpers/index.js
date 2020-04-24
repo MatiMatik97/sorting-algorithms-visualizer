@@ -2,7 +2,7 @@ export const
     BARS_BASIC_BG_COLOR = "#6ba4ee",
     BARS_SWAPPED_BG_COLOR = "#2cb978",
     BARS_SWAP_BG_COLOR = "#107a8b",
-    BARS_DONE_BG_COLOR = "#86da4e";
+    BARS_DONE_BG_COLOR = "#26d484";
 
 export const
     DEFAULT_STEP_TIME = 2000,

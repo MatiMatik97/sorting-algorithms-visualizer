@@ -23,7 +23,7 @@
 
 /* ------- SLIDER NOT SORTING ------- */
 
-.slider {
+.navbar .slider {
     -webkit-appearance: none;
     height: 10px;
     border-radius: 5px;
@@ -31,11 +31,11 @@
     outline: none;
 }
 
-.slider:hover {
+.navbar .slider:hover {
     cursor: pointer;
 }
 
-.slider::-webkit-slider-thumb {
+.navbar .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
@@ -48,11 +48,11 @@
     transition: background-color .2s ease-in-out;
 }
 
-.slider::-webkit-slider-thumb:hover {
+.navbar .slider::-webkit-slider-thumb:hover {
     background-color: var(--primary-sorting-bg-hover-color);
 }
 
-.slider::-moz-range-thumb {
+.navbar .slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border: 0;
@@ -63,33 +63,76 @@
     transition: background-color .2s ease-in-out;
 }
 
-.slider::-moz-range-thumb:hover {
+.navbar .slider::-moz-range-thumb:hover {
     background-color: var(--primary-sorting-bg-hover-color);
 }
 
 /* ------- SLIDER SORTING ------- */
 
-.slider-disabled:hover {
+.navbar .slider-disabled:hover {
     cursor: not-allowed;
 }
 
-.slider-disabled::-webkit-slider-thumb {
+.navbar .slider-disabled::-webkit-slider-thumb {
     background-color: var(--primary-not-sorting-bg-color);
 }
 
-.slider-disabled::-webkit-slider-thumb:hover {
+.navbar .slider-disabled::-webkit-slider-thumb:hover {
     cursor: not-allowed;
     background-color: var(--primary-not-sorting-bg-color);
 }
 
-.slider-disabled::-moz-range-thumb {
+.navbar .slider-disabled::-moz-range-thumb {
     background-color: var(--primary-sorting-bg-color);
 }
 
-.slider-disabled::-moz-range-thumb:hover {
+.navbar .slider-disabled::-moz-range-thumb:hover {
     cursor: not-allowed;
     background-color: var(--primary-not-sorting-bg-color);
 }
+
+/* ------- MENU NOT SORTING ------- */
+
+.navbar .navbar-menu {
+    width: 100px;
+    background-color: lightgray;
+    /* temporary */
+}
+
+.navbar .menu-button {
+    width: 100%;
+    padding: 2px;
+    outline: none;
+    border: 1px solid #2c2c2c80;
+    border-radius: 5px;
+    background-color: var(--primary-sorting-bg-color);
+    color: #3a3a3a;
+    transition: background-color .2s ease-in-out;
+}
+
+.navbar .menu-button:hover {
+    cursor: pointer;
+    background-color: var(--primary-sorting-bg-hover-color);
+}
+
+.navbar .menu-list {
+    width: 100px;
+    background-color: lightgray;
+    /* temporary */
+    padding-top: 5px;
+    position: absolute;
+    list-style-type: none;
+    height: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: height .2s ease-in;
+}
+
+.navbar .collapsed {
+    height: 0px;
+}
+
+/* ------- MENU SORTING ------- */
 
 /* ------- SORT BUTTON NOT SORTING ------- */
 
