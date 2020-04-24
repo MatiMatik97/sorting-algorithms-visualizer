@@ -1,10 +1,11 @@
 export const
     BARS_BASIC_BG_COLOR = "#6ba4ee",
-    BARS_COPMARE_BG_COLOR = "#df1010",
-    BARS_DONE_BG_COLOR = "#3da827";
+    BARS_SWAPPED_BG_COLOR = "#2cb978",
+    BARS_SWAP_BG_COLOR = "#107a8b",
+    BARS_DONE_BG_COLOR = "#86da4e";
 
 export const
-    DEFAULT_STEP_TIME = 400,
+    DEFAULT_STEP_TIME = 2000,
     DONE_TIME = 300;
 
 export const swapInArray = (arr, i, j) => {
@@ -13,7 +14,7 @@ export const swapInArray = (arr, i, j) => {
     arr[j] = temp;
 };
 
-export const finishAnimations = (STEP_TIME, animations) => {
+export const finishAnimations = (STEP_TIME, animLength) => {
     setTimeout(() => {
         const displayBarEls = [...document.querySelectorAll('.display-bar')];
 
@@ -21,7 +22,7 @@ export const finishAnimations = (STEP_TIME, animations) => {
             displayBar.style.backgroundColor = BARS_DONE_BG_COLOR;
             return displayBar;
         });
-    }, (animations.length) * STEP_TIME);
+    }, (animLength) * STEP_TIME);
 
     setTimeout(() => {
         const displayBarEls = [...document.querySelectorAll('.display-bar')];
@@ -31,5 +32,5 @@ export const finishAnimations = (STEP_TIME, animations) => {
             return displayBar;
         });
 
-    }, (animations.length + 1) * STEP_TIME + DONE_TIME);
+    }, (animLength + 1) * STEP_TIME + DONE_TIME);
 }

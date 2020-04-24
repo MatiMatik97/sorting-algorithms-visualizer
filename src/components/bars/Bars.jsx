@@ -45,7 +45,10 @@ const Bars = () => {
   const generateArray = (length) => {
     const arr = [];
     for (let i = 0; i < length; i++) {
-      arr.push({ id: i, size: generateNumber(MIN_HEIGHT, MAX_HEIGHT) });
+      arr.push({
+        id: i,
+        size: generateNumber(MIN_HEIGHT, MAX_HEIGHT),
+      });
     }
     setBars(arr);
   };

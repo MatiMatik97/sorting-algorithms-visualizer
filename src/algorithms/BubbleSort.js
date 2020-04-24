@@ -1,5 +1,6 @@
 import {
-    BARS_BASIC_BG_COLOR, BARS_COPMARE_BG_COLOR,
+    BARS_BASIC_BG_COLOR, BARS_SWAPPED_BG_COLOR,
+    BARS_SWAP_BG_COLOR,
     DEFAULT_STEP_TIME, DONE_TIME,
     swapInArray, finishAnimations
 } from '../helpers';
@@ -9,10 +10,10 @@ const BubbleSort = () => { }
 BubbleSort.init = (bars, setBars) => {
     const animations = [];
     const barsCopy = [...bars];
-    const n = barsCopy.length;
+    const barsLength = barsCopy.length;
 
-    for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
+    for (let i = 0; i < barsLength - 1; i++) {
+        for (let j = 0; j < barsLength - i - 1; j++) {
             let toSwap = false;
 
             if (barsCopy[j].size < barsCopy[j + 1].size) {
@@ -40,31 +41,35 @@ BubbleSort.animate = (barsAmount, setBars, animations) => {
     for (let anim = 0; anim < animations.length; anim++) {
         const { compare: { i, j }, toSwap } = animations[anim];
 
-        const iDisplayBar = document.querySelector(`.display-bar-${i}`);
-        const jDisplayBar = document.querySelector(`.display-bar-${j}`);
-
         setTimeout(() => {
-            iDisplayBar.style.backgroundColor = BARS_COPMARE_BG_COLOR;
-            jDisplayBar.style.backgroundColor = BARS_COPMARE_BG_COLOR;
-        }, (anim) * STEP_TIME);
+            const displayBars = [...document.querySelectorAll('.display-bar')];
 
-        setTimeout(() => {
-            if (toSwap) {
-                setBars((prevBars) => {
-                    const newBars = [...prevBars];
-                    swapInArray(newBars, i, j);
-                    return newBars;
-                });
-            }
+            displayBars.map(displayBar => {
+                displayBar.style.backgroundColor = BARS_BASIC_BG_COLOR;
+                return displayBar;
+            });
 
-            iDisplayBar.style.backgroundColor = BARS_BASIC_BG_COLOR;
-            jDisplayBar.style.backgroundColor = BARS_BASIC_BG_COLOR;
-        }, (anim + 1) * STEP_TIME);
+            const iDisplayBar = displayBars[i];
+            const jDisplayBar = displayBars[j];
+            const color = toSwap ? BARS_SWAP_BG_COLOR : BARS_SWAPPED_BG_COLOR;
+            iDisplayBar.style.backgroundColor = color;
+            jDisplayBar.style.backgroundColor = color;
+
+            setTimeout(() => {
+                if (toSwap) {
+                    setBars((prevBars) => {
+                        const newBars = [...prevBars];
+                        swapInArray(newBars, i, j);
+                        return newBars;
+                    });
+                }
+            }, Math.round(STEP_TIME / 2));
+        }, anim * STEP_TIME);
 
         sortingTime += STEP_TIME;
     }
 
-    finishAnimations(STEP_TIME, animations);
+    finishAnimations(STEP_TIME, animations.length);
 
     return sortingTime + STEP_TIME + DONE_TIME;
 }
