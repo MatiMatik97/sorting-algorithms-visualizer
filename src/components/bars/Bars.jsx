@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useCallback, useContext } from "react";
 import "./Bars.css";
 import DisplayBars from "./DisplayBars";
-import { BarsAmountContext } from "../../App";
-import { IsSortingContext } from "../../App";
+import {
+  BarsAmountContext,
+  IsSortingContext,
+  CurrentAlgorithmContext,
+} from "../../App";
 import BubbleSort from "../../algorithms/BubbleSort";
 
 export const resizeHandler = (barsAmount) => {
@@ -33,6 +36,7 @@ export const resizeHandler = (barsAmount) => {
 const Bars = () => {
   const { barsAmount } = useContext(BarsAmountContext);
   const { isSorting, setIsSorting } = useContext(IsSortingContext);
+  const { currentAlgorithm } = useContext(CurrentAlgorithmContext);
   const [bars, setBars] = useState([]);
 
   const MIN_HEIGHT = 20;
@@ -70,20 +74,30 @@ const Bars = () => {
   });
 
   useEffect(() => {
-    if (isSorting) {
+    if (isSorting && currentAlgorithm) {
       const sortButtonEl = document.querySelector(".sort-button");
-      sortButtonEl.innerHTML = "Sorting";
+      sortButtonEl.innerHTML = `Sorting ${currentAlgorithm}`;
+      setIsSorting(true);
 
       let sortingTime = 0;
-      sortingTime = BubbleSort.init(bars, setBars);
+      switch (currentAlgorithm) {
+        case "BubbleSort":
+          sortingTime = BubbleSort.init(bars, setBars);
+          break;
+        case "QuickSort":
+          sortingTime = 0;
+          break;
+        default:
+          return;
+      }
 
       setTimeout(() => {
+        sortButtonEl.innerHTML = `Sort ${currentAlgorithm}`;
         setIsSorting(false);
-        sortButtonEl.innerHTML = "Sort";
       }, sortingTime);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSorting]);
+  }, [isSorting, currentAlgorithm]);
 
   return <DisplayBars bars={bars} />;
 };

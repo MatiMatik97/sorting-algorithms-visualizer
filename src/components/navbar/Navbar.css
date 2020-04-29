@@ -1,7 +1,7 @@
 :root {
-    --primary-sorting-bg-color: #16b8e9;
-    --primary-sorting-bg-hover-color: #0ac1f8;
-    --primary-not-sorting-bg-color: #bbbbbb;
+    --primary-not-sorting-bg-color: #5dc2c6;
+    --primary-not-sorting-bg-hover-color: #5dd4d8;
+    --primary-sorting-bg-color: #bbbbbb;
 }
 
 .navbar {
@@ -42,14 +42,14 @@
     height: 20px;
     border: 0;
     border-radius: 50%;
-    background-color: var(--primary-sorting-bg-color);
+    background-color: var(--primary-not-sorting-bg-color);
     border: 1px solid #2c2c2c80;
     cursor: pointer;
     transition: background-color .2s ease-in-out;
 }
 
 .navbar .slider::-webkit-slider-thumb:hover {
-    background-color: var(--primary-sorting-bg-hover-color);
+    background-color: var(--primary-not-sorting-bg-hover-color);
 }
 
 .navbar .slider::-moz-range-thumb {
@@ -57,14 +57,14 @@
     height: 20px;
     border: 0;
     border-radius: 50%;
-    background-color: var(--primary-sorting-bg-color);
+    background-color: var(--primary-not-sorting-bg-color);
     border: 1px solid #2c2c2c80;
     cursor: pointer;
     transition: background-color .2s ease-in-out;
 }
 
 .navbar .slider::-moz-range-thumb:hover {
-    background-color: var(--primary-sorting-bg-hover-color);
+    background-color: var(--primary-not-sorting-bg-hover-color);
 }
 
 /* ------- SLIDER SORTING ------- */
@@ -74,55 +74,69 @@
 }
 
 .navbar .slider-disabled::-webkit-slider-thumb {
-    background-color: var(--primary-not-sorting-bg-color);
+    background-color: var(--primary-sorting-bg-color);
 }
 
 .navbar .slider-disabled::-webkit-slider-thumb:hover {
     cursor: not-allowed;
-    background-color: var(--primary-not-sorting-bg-color);
+    background-color: var(--primary-sorting-bg-color);
 }
 
 .navbar .slider-disabled::-moz-range-thumb {
-    background-color: var(--primary-sorting-bg-color);
+    background-color: var(--primary-not-sorting-bg-color);
 }
 
 .navbar .slider-disabled::-moz-range-thumb:hover {
     cursor: not-allowed;
-    background-color: var(--primary-not-sorting-bg-color);
+    background-color: var(--primary-sorting-bg-color);
 }
 
 /* ------- MENU NOT SORTING ------- */
 
 .navbar .navbar-menu {
     width: 100px;
-    background-color: lightgray;
-    /* temporary */
 }
 
 .navbar .menu-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
-    padding: 2px;
+    height: 25px;
     outline: none;
     border: 1px solid #2c2c2c80;
-    border-radius: 5px;
-    background-color: var(--primary-sorting-bg-color);
+    border-radius: 5px 5px 0px 0px;
+    background-color: var(--primary-not-sorting-bg-color);
     color: #3a3a3a;
     transition: background-color .2s ease-in-out;
 }
 
+.navbar .menu-arrow-icon {
+    fill: #2c2c2c80;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 3px;
+    transform: rotate(0deg);
+    transition: .2s ease-in;
+}
+
+.navbar .arrow-collapsed {
+    transform: rotate(90deg);
+}
+
 .navbar .menu-button:hover {
     cursor: pointer;
-    background-color: var(--primary-sorting-bg-hover-color);
+    background-color: var(--primary-not-sorting-bg-hover-color);
 }
 
 .navbar .menu-list {
-    width: 100px;
-    background-color: lightgray;
-    /* temporary */
-    padding-top: 5px;
+    background-color: var(--primary-not-sorting-bg-color);
+    width: 98px;
+    margin-left: 1px;
+    font-size: 13px;
     position: absolute;
     list-style-type: none;
-    height: 50px;
+    height: 55px;
     overflow: hidden;
     white-space: nowrap;
     transition: height .2s ease-in;
@@ -132,33 +146,61 @@
     height: 0px;
 }
 
+.navbar .list-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: .2s ease-in;
+}
+
+.navbar .list-item:not(:last-child) {
+    border-bottom: 1px solid #2c2c2c80;
+}
+
+.navbar .list-item:not(:first-child) {
+    border-top: none;
+}
+
+.navbar .list-item:hover {
+    cursor: pointer;
+    background-color: var(--primary-not-sorting-bg-hover-color);
+}
+
 /* ------- MENU SORTING ------- */
+
+.navbar .menu-disabled {
+    background-color: var(--primary-sorting-bg-color);
+}
+
+.navbar .menu-disabled:hover {
+    cursor: not-allowed;
+    background-color: var(--primary-sorting-bg-color);
+}
 
 /* ------- SORT BUTTON NOT SORTING ------- */
 
 .navbar .sort-button {
-    width: 75px;
-    padding: 2px;
+    width: 125px;
+    height: 25px;
     outline: none;
     border: 1px solid #2c2c2c80;
     border-radius: 5px;
-    background-color: var(--primary-sorting-bg-color);
+    background-color: var(--primary-not-sorting-bg-color);
     color: #3a3a3a;
     transition: background-color .2s ease-in-out;
 }
 
 .navbar .sort-button:hover {
     cursor: pointer;
-    background-color: var(--primary-sorting-bg-hover-color);
+    background-color: var(--primary-not-sorting-bg-hover-color);
 }
 
 /* ------- SORT BUTTON NOT SORTING ------- */
 
 .navbar .sort-button-disabled {
-    background-color: var(--primary-not-sorting-bg-color);
+    background-color: var(--primary-sorting-bg-color);
 }
 
 .navbar .sort-button-disabled:hover {
     cursor: not-allowed;
-    background-color: var(--primary-not-sorting-bg-color);
+    background-color: var(--primary-sorting-bg-color);
 }
