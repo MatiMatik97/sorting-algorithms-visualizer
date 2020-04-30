@@ -42,6 +42,12 @@ const Navbar = () => {
       sortButtonEl.innerHTML = `Sort ${algorithm}-${
         sortingOrder === "DESC" ? "Descending" : "Ascending"
       }`;
+
+      const orderPickButtonEls = [
+        ...document.querySelectorAll(".order-pick-button"),
+      ];
+      orderPickButtonEls[0].classList.remove("order-pick-button-disabled");
+      orderPickButtonEls[1].classList.remove("order-pick-button-disabled");
     }
   };
 
@@ -66,6 +72,12 @@ const Navbar = () => {
   useEffect(() => {
     const sortButtonEl = document.querySelector(".sort-button");
     sortButtonEl.classList.add("sort-button-disabled");
+
+    const orderPickButtonEls = [
+      ...document.querySelectorAll(".order-pick-button"),
+    ];
+    orderPickButtonEls[0].classList.add("order-pick-button-disabled");
+    orderPickButtonEls[1].classList.add("order-pick-button-disabled");
   }, []);
 
   return (
