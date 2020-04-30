@@ -7,7 +7,7 @@ import {
 
 const BubbleSort = () => { }
 
-BubbleSort.init = (bars, setBars) => {
+BubbleSort.init = (bars, setBars, sortingOrder) => {
     const animations = [];
     const barsCopy = [...bars];
     const barsLength = barsCopy.length;
@@ -16,7 +16,12 @@ BubbleSort.init = (bars, setBars) => {
         for (let j = 0; j < barsLength - i - 1; j++) {
             let toSwap = false;
 
-            if (barsCopy[j].size < barsCopy[j + 1].size) {
+            if (sortingOrder === "DESC"
+                && barsCopy[j].size < barsCopy[j + 1].size) {
+                toSwap = true;
+                swapInArray(barsCopy, j, j + 1);
+            } else if (sortingOrder === "ASC"
+                && barsCopy[j].size > barsCopy[j + 1].size) {
                 toSwap = true;
                 swapInArray(barsCopy, j, j + 1);
             }

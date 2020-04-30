@@ -21,6 +21,21 @@
     margin: 5px;
 }
 
+.navbar .navbar-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.navbar .navbar-element {
+    margin: 10px;
+}
+
+.navbar .navbar-element-text {
+    margin-bottom: 5px;
+}
+
 /* ------- SLIDER NOT SORTING ------- */
 
 .navbar .slider {
@@ -29,6 +44,7 @@
     border-radius: 5px;
     background-color: #e2f3f5;
     outline: none;
+    margin-top: 3px;
 }
 
 .navbar .slider:hover {
@@ -136,7 +152,7 @@
     font-size: 13px;
     position: absolute;
     list-style-type: none;
-    height: 55px;
+    height: 52px;
     overflow: hidden;
     white-space: nowrap;
     transition: height .2s ease-in;
@@ -176,11 +192,53 @@
     background-color: var(--primary-sorting-bg-color);
 }
 
+/* ------- ORDER PICK NOT SORTING ------- */
+
+.navbar .navbar-order-pick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .order-pick-button {
+    width: 90px;
+    height: 25px;
+    outline: none;
+    border: 1px solid #2c2c2c80;
+    background-color: var(--primary-not-sorting-bg-color);
+    color: #3a3a3a;
+    transition: background-color .2s ease-in-out;
+}
+
+.navbar .order-pick-button:hover {
+    cursor: pointer;
+    background-color: var(--primary-not-sorting-bg-hover-color);
+}
+
+.navbar .order-pick-asc {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.navbar .order-pick-desc {
+    border-radius: 0px 5px 5px 0px;
+}
+
+/* ------- ORDER PICK SORTING ------- */
+
+.navbar .order-pick-button-disabled {
+    background-color: var(--primary-sorting-bg-color);
+}
+
+.navbar .order-pick-button-disabled:hover {
+    cursor: not-allowed;
+    background-color: var(--primary-sorting-bg-color);
+}
+
 /* ------- SORT BUTTON NOT SORTING ------- */
 
 .navbar .sort-button {
-    width: 125px;
-    height: 25px;
+    width: 170px;
+    height: 45px;
     outline: none;
     border: 1px solid #2c2c2c80;
     border-radius: 5px;

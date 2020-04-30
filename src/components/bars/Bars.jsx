@@ -5,6 +5,7 @@ import {
   BarsAmountContext,
   IsSortingContext,
   CurrentAlgorithmContext,
+  SortingOrderContext,
 } from "../../App";
 import BubbleSort from "../../algorithms/BubbleSort";
 
@@ -37,6 +38,7 @@ const Bars = () => {
   const { barsAmount } = useContext(BarsAmountContext);
   const { isSorting, setIsSorting } = useContext(IsSortingContext);
   const { currentAlgorithm } = useContext(CurrentAlgorithmContext);
+  const { sortingOrder } = useContext(SortingOrderContext);
   const [bars, setBars] = useState([]);
 
   const MIN_HEIGHT = 20;
@@ -76,13 +78,15 @@ const Bars = () => {
   useEffect(() => {
     if (isSorting && currentAlgorithm) {
       const sortButtonEl = document.querySelector(".sort-button");
-      sortButtonEl.innerHTML = `Sorting ${currentAlgorithm}`;
+      sortButtonEl.innerHTML = `Sorting ${currentAlgorithm}-${
+        sortingOrder === "DESC" ? "Descending" : "Ascending"
+      }`;
       setIsSorting(true);
 
       let sortingTime = 0;
       switch (currentAlgorithm) {
         case "BubbleSort":
-          sortingTime = BubbleSort.init(bars, setBars);
+          sortingTime = BubbleSort.init(bars, setBars, sortingOrder);
           break;
         case "QuickSort":
           sortingTime = 0;
@@ -92,7 +96,9 @@ const Bars = () => {
       }
 
       setTimeout(() => {
-        sortButtonEl.innerHTML = `Sort ${currentAlgorithm}`;
+        sortButtonEl.innerHTML = `Sort ${currentAlgorithm}-${
+          sortingOrder === "DESC" ? "Descending" : "Ascending"
+        }`;
         setIsSorting(false);
       }, sortingTime);
     }
