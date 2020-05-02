@@ -1,26 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./Navbar.css";
-import {
-  BarsAmountContext,
-  IsSortingContext,
-  CurrentAlgorithmContext,
-  SortingOrderContext,
-} from "../../App";
+import { StateContext } from "../../App";
 import { resizeHandler } from "../bars/Bars";
 import NavbarDisplay from "./NavbarDisplay";
 
 const Navbar = () => {
-  const { barsAmount, setBarsAmount } = useContext(BarsAmountContext);
-  const { isSorting, setIsSorting } = useContext(IsSortingContext);
-  const { currentAlgorithm, setCurrentAlgorithm } = useContext(
-    CurrentAlgorithmContext
-  );
-  const { sortingOrder, setSortingOrder } = useContext(SortingOrderContext);
+  const {
+    state: { barsAmount, isSorting, currentAlgorithm, sortingOrder },
+    dispatch,
+  } = useContext(StateContext);
   const [collapsed, setCollapsed] = useState(true);
 
   const onChangeSliderHandle = (e) => {
     if (!isSorting) {
-      setBarsAmount(e.target.value);
+      dispatch({ type: "UPDATE_BARS_AMOUNT", payload: e.target.value });
       resizeHandler(barsAmount);
       setCollapsed(true);
     }
@@ -34,7 +27,10 @@ const Navbar = () => {
 
   const onClickChooseAlgorithm = (algorithm) => {
     if (!isSorting) {
-      setCurrentAlgorithm(algorithm);
+      dispatch({
+        type: "UPDATE_CURRENT_ALGORITHM",
+        payload: algorithm,
+      });
       setCollapsed(true);
 
       const sortButtonEl = document.querySelector(".sort-button");
@@ -53,7 +49,7 @@ const Navbar = () => {
 
   const onClickChooseOrder = (order) => {
     if (!isSorting && currentAlgorithm) {
-      setSortingOrder(order);
+      dispatch({ type: "UPDATE_SORTING_ORDER", payload: order });
 
       const sortButtonEl = document.querySelector(".sort-button");
       sortButtonEl.innerHTML = `Sort ${currentAlgorithm}-${
@@ -64,7 +60,7 @@ const Navbar = () => {
 
   const onClickSortButton = () => {
     if (!isSorting && currentAlgorithm) {
-      setIsSorting(true);
+      dispatch({ type: "UPDATE_IS_SORTING", payload: true });
       setCollapsed(true);
     }
   };
