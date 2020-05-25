@@ -1,14 +1,7 @@
-import React, { createContext, useReducer } from "react";
+import React, { useReducer } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Main from "./components/main/Main";
-
-export const BarsAmountContext = createContext();
-export const IsSortingContext = createContext();
-export const CurrentAlgorithmContext = createContext();
-export const SortingOrderContext = createContext();
-
-export const StateContext = createContext(null);
 
 const App = () => {
   const initialState = {
@@ -48,12 +41,10 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <StateContext.Provider value={{ state, dispatch }}>
-      <div className="app">
-        <Navbar />
-        <Main />
-      </div>
-    </StateContext.Provider>
+    <div className="app">
+      <Navbar state={state} dispatch={dispatch} />
+      <Main state={state} dispatch={dispatch} />
+    </div>
   );
 };
 

@@ -181,6 +181,10 @@
     background-color: var(--primary-not-sorting-bg-hover-color);
 }
 
+.navbar .list-item-active {
+    background-color: var(--primary-not-sorting-bg-hover-color);
+}
+
 /* ------- MENU SORTING ------- */
 
 .navbar .menu-disabled {
@@ -221,6 +225,10 @@
 
 .navbar .order-pick-desc {
     border-radius: 0px 5px 5px 0px;
+}
+
+.navbar .order-pick-button-active {
+    background-color: var(--primary-not-sorting-bg-hover-color);
 }
 
 /* ------- ORDER PICK SORTING ------- */

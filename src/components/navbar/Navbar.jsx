@@ -1,14 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-import { StateContext } from "../../App";
 import { resizeHandler } from "../bars/Bars";
 import NavbarDisplay from "./NavbarDisplay";
 
-const Navbar = () => {
-  const {
-    state: { barsAmount, isSorting, currentAlgorithm, sortingOrder },
-    dispatch,
-  } = useContext(StateContext);
+const Navbar = ({
+  state: { barsAmount, isSorting, currentAlgorithm, sortingOrder },
+  dispatch,
+}) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const onChangeSliderHandle = (e) => {
@@ -81,6 +79,8 @@ const Navbar = () => {
       barsAmount={barsAmount}
       isSorting={isSorting}
       collapsed={collapsed}
+      currentAlgorithm={currentAlgorithm}
+      sortingOrder={sortingOrder}
       onChangeSliderHandle={onChangeSliderHandle}
       onClickMenuButton={onClickMenuButton}
       onClickChooseAlgorithm={onClickChooseAlgorithm}

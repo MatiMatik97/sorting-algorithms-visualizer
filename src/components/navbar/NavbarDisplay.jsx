@@ -4,6 +4,8 @@ const NavbarDisplay = ({
   barsAmount,
   isSorting,
   collapsed,
+  currentAlgorithm,
+  sortingOrder,
   onChangeSliderHandle,
   onClickMenuButton,
   onClickChooseAlgorithm,
@@ -55,13 +57,15 @@ const NavbarDisplay = ({
             </button>
             <ul className={`menu-list ${menuCollapseClass}`}>
               <li
-                className="list-item"
+                className={`list-item
+                ${currentAlgorithm === "BubbleSort" ? "list-item-active" : ""}`}
                 onClick={() => onClickChooseAlgorithm("BubbleSort")}
               >
                 BubbleSort
               </li>
               <li
-                className="list-item"
+                className={`list-item
+                ${currentAlgorithm === "QuickSort" ? "list-item-active" : ""}`}
                 onClick={() => onClickChooseAlgorithm("QuickSort")}
               >
                 QuickSort
@@ -74,13 +78,16 @@ const NavbarDisplay = ({
           <span className="navbar-element-text">Sorting order</span>
           <div className="navbar-order-pick">
             <button
-              className={`order-pick-button ${orderPickButtonClassName} order-pick-asc`}
+              className={`order-pick-button order-pick-asc ${orderPickButtonClassName}
+              ${sortingOrder === "ASC" ? "order-pick-button-active" : ""} `}
               onClick={() => onClickChooseOrder("ASC")}
             >
               Ascending
             </button>
             <button
-              className={`order-pick-button ${orderPickButtonClassName} order-pick-desc`}
+              className={`order-pick-button order-pick-desc 
+              ${orderPickButtonClassName}
+              ${sortingOrder === "DESC" ? "order-pick-button-active" : ""} `}
               onClick={() => onClickChooseOrder("DESC")}
             >
               Descending

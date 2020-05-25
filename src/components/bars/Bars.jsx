@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useCallback, useContext } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./Bars.css";
 import DisplayBars from "./DisplayBars";
-import { StateContext } from "../../App";
 import BubbleSort from "../../algorithms/BubbleSort";
+import QuickSort from "../../algorithms/QuickSort";
 
 export const resizeHandler = (barsAmount) => {
   const windowWidth = window.innerWidth;
@@ -29,11 +29,10 @@ export const resizeHandler = (barsAmount) => {
   });
 };
 
-const Bars = () => {
-  const {
-    state: { barsAmount, isSorting, currentAlgorithm, sortingOrder },
-    dispatch,
-  } = useContext(StateContext);
+const Bars = ({
+  state: { barsAmount, isSorting, currentAlgorithm, sortingOrder },
+  dispatch,
+}) => {
   const [bars, setBars] = useState([]);
 
   const MIN_HEIGHT = 20;
@@ -84,7 +83,7 @@ const Bars = () => {
           sortingTime = BubbleSort.init(bars, setBars, sortingOrder);
           break;
         case "QuickSort":
-          sortingTime = 0;
+          sortingTime = QuickSort.init(bars, setBars, sortingOrder);
           break;
         default:
           return;
@@ -99,6 +98,9 @@ const Bars = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSorting, currentAlgorithm]);
+
+  //choose quicksort algorithm on page load
+  useEffect(() => [...document.querySelectorAll(".list-item")][1].click(), []);
 
   return <DisplayBars bars={bars} />;
 };
