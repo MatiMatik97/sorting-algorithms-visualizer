@@ -2,10 +2,12 @@ import React, { useReducer } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Main from "./components/main/Main";
+import Markings from "./markings/Markings";
 
 const App = () => {
   const initialState = {
     barsAmount: 10,
+    stepTime: 2000,
     isSorting: false,
     currentAlgorithm: "",
     sortingOrder: "DESC",
@@ -17,6 +19,11 @@ const App = () => {
         return {
           ...state,
           barsAmount: action.payload,
+        };
+      case "UPDATE_STEP_TIME":
+        return {
+          ...state,
+          stepTime: action.payload,
         };
       case "UPDATE_IS_SORTING":
         return {
@@ -34,7 +41,7 @@ const App = () => {
           sortingOrder: action.payload,
         };
       default:
-        return initialState;
+        return state;
     }
   };
 
@@ -44,6 +51,7 @@ const App = () => {
     <div className="app">
       <Navbar state={state} dispatch={dispatch} />
       <Main state={state} dispatch={dispatch} />
+      <Markings state={state} />
     </div>
   );
 };

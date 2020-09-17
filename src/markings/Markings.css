@@ -1,0 +1,28 @@
+.markings {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.markings__title {
+    margin: 10px;
+}
+
+.markings__mark {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.markings__mark__color {
+    width: 30px;
+    height: 10px;
+    margin-right: 10px;
+}
+
+.markings__mark__title {
+    font-size: 12px;
+}

@@ -2,11 +2,13 @@ import React from "react";
 
 const NavbarDisplay = ({
   barsAmount,
+  stepTime,
   isSorting,
   collapsed,
   currentAlgorithm,
   sortingOrder,
-  onChangeSliderHandle,
+  onChangeBarsAmountSlider,
+  onChangeStepTimeSlider,
   onClickMenuButton,
   onClickChooseAlgorithm,
   onClickChooseOrder,
@@ -35,7 +37,20 @@ const NavbarDisplay = ({
             value={barsAmount}
             className={`slider ${sliderClassName}`}
             disabled={isSorting}
-            onChange={(e) => onChangeSliderHandle(e)}
+            onChange={(e) => onChangeBarsAmountSlider(e)}
+          />
+        </div>
+        {/* --------- CHANGE STEP TIME --------- */}
+        <div className="navbar-element">
+          <span className="navbar-element-text">Sorting time</span>
+          <input
+            type="range"
+            min="1000"
+            max="5000"
+            value={stepTime}
+            className={`slider ${sliderClassName}`}
+            disabled={isSorting}
+            onChange={(e) => onChangeStepTimeSlider(e)}
           />
         </div>
         {/* --------- ALGORITHM PICK --------- */}

@@ -30,7 +30,7 @@ export const resizeHandler = (barsAmount) => {
 };
 
 const Bars = ({
-  state: { barsAmount, isSorting, currentAlgorithm, sortingOrder },
+  state: { barsAmount, stepTime, isSorting, currentAlgorithm, sortingOrder },
   dispatch,
 }) => {
   const [bars, setBars] = useState([]);
@@ -80,10 +80,10 @@ const Bars = ({
       let sortingTime = 0;
       switch (currentAlgorithm) {
         case "BubbleSort":
-          sortingTime = BubbleSort.init(bars, setBars, sortingOrder);
+          sortingTime = BubbleSort.init(bars, setBars, stepTime, sortingOrder);
           break;
         case "QuickSort":
-          sortingTime = QuickSort.init(bars, setBars, sortingOrder);
+          sortingTime = QuickSort.init(bars, setBars, stepTime, sortingOrder);
           break;
         default:
           return;
@@ -96,10 +96,11 @@ const Bars = ({
         dispatch({ type: "UPDATE_IS_SORTING", payload: false });
       }, sortingTime);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSorting, currentAlgorithm]);
 
-  //choose quicksort algorithm on page load
+  // choose quicksort algorithm on page load
   useEffect(() => [...document.querySelectorAll(".list-item")][1].click(), []);
 
   return <DisplayBars bars={bars} />;

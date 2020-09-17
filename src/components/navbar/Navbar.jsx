@@ -4,15 +4,22 @@ import { resizeHandler } from "../bars/Bars";
 import NavbarDisplay from "./NavbarDisplay";
 
 const Navbar = ({
-  state: { barsAmount, isSorting, currentAlgorithm, sortingOrder },
+  state: { barsAmount, stepTime, isSorting, currentAlgorithm, sortingOrder },
   dispatch,
 }) => {
   const [collapsed, setCollapsed] = useState(true);
 
-  const onChangeSliderHandle = (e) => {
+  const onChangeBarsAmountSlider = (e) => {
     if (!isSorting) {
       dispatch({ type: "UPDATE_BARS_AMOUNT", payload: e.target.value });
       resizeHandler(barsAmount);
+      setCollapsed(true);
+    }
+  };
+
+  const onChangeStepTimeSlider = (e) => {
+    if (!isSorting) {
+      dispatch({ type: "UPDATE_STEP_TIME", payload: e.target.value });
       setCollapsed(true);
     }
   };
@@ -77,11 +84,13 @@ const Navbar = ({
   return (
     <NavbarDisplay
       barsAmount={barsAmount}
+      stepTime={stepTime}
       isSorting={isSorting}
       collapsed={collapsed}
       currentAlgorithm={currentAlgorithm}
       sortingOrder={sortingOrder}
-      onChangeSliderHandle={onChangeSliderHandle}
+      onChangeBarsAmountSlider={onChangeBarsAmountSlider}
+      onChangeStepTimeSlider={onChangeStepTimeSlider}
       onClickMenuButton={onClickMenuButton}
       onClickChooseAlgorithm={onClickChooseAlgorithm}
       onClickChooseOrder={onClickChooseOrder}
