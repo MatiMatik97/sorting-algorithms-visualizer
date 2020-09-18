@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Main from "./components/main/Main";
-import Markings from "./markings/Markings";
+import Markings from "./components/markings/Markings";
 
 const App = () => {
   const initialState = {

@@ -61,7 +61,7 @@ const NavbarDisplay = ({
               className={`menu-button ${menuClassName}`}
               onClick={() => onClickMenuButton()}
             >
-              Algorithm{" "}
+              {`${currentAlgorithm === "" ? "Choose" : currentAlgorithm} `}
               <svg
                 className={`menu-arrow-icon ${arrowCollapseClass}`}
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,6 +84,13 @@ const NavbarDisplay = ({
                 onClick={() => onClickChooseAlgorithm("QuickSort")}
               >
                 QuickSort
+              </li>
+              <li
+                className={`list-item
+                ${currentAlgorithm === "MergeSort" ? "list-item-active" : ""}`}
+                onClick={() => onClickChooseAlgorithm("MergeSort")}
+              >
+                MergeSort
               </li>
             </ul>
           </div>

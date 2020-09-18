@@ -152,7 +152,8 @@
     font-size: 13px;
     position: absolute;
     list-style-type: none;
-    height: 52px;
+    /* 26px */
+    height: 78px; 
     overflow: hidden;
     white-space: nowrap;
     transition: height .2s ease-in;

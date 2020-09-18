@@ -3,7 +3,8 @@ export const
     BARS_SWAPPED_BG_COLOR = "#2cb978",
     BARS_SWAP_BG_COLOR = "#107a8b",
     BARS_DONE_BG_COLOR = "#26d484",
-    BARS_PIVOT_BG_COLOR = "#952e8f";
+    BARS_PIVOT_BG_COLOR = "#952e8f",
+    BARS_OVERWRITE_BG_COLOR = "#952e8f";
 
 const BASIC_SORT_COLORS = {
     BARS_BASIC_BG_COLOR,
@@ -21,10 +22,17 @@ export const QUICK_SORT_COLORS = {
     BARS_PIVOT_BG_COLOR
 }
 
+export const MERGE_SORT_COLORS = {
+    BARS_BASIC_BG_COLOR,
+    BARS_SWAP_BG_COLOR,
+    BARS_DONE_BG_COLOR,
+    BARS_OVERWRITE_BG_COLOR
+}
+
 const BASIC_MARKINGS = [
     { color: BARS_BASIC_BG_COLOR, title: "Basic" },
     { color: BARS_SWAPPED_BG_COLOR, title: "Swapped" },
-    { color: BARS_SWAP_BG_COLOR, title: "Swap" },
+    { color: BARS_SWAP_BG_COLOR, title: "Compare" },
     { color: BARS_DONE_BG_COLOR, title: "Done" },
 ];
 
@@ -33,6 +41,13 @@ export const BUBBLE_SORT_MARKINGS = BASIC_MARKINGS;
 export const QUICK_SORT_MARKINGS = [
     ...BASIC_MARKINGS,
     { color: BARS_PIVOT_BG_COLOR, title: "Pivot" },
+];
+
+export const MERGE_SORT_MARKINGS = [
+    { color: BARS_BASIC_BG_COLOR, title: "Basic" },
+    { color: BARS_SWAP_BG_COLOR, title: "Compare" },
+    { color: BARS_DONE_BG_COLOR, title: "Done" },
+    { color: BARS_OVERWRITE_BG_COLOR, title: "Overwrite" },
 ];
 
 export const

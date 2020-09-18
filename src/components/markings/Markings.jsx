@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Markings.css";
-import { BUBBLE_SORT_MARKINGS, QUICK_SORT_MARKINGS } from "../helpers";
+import {
+  BUBBLE_SORT_MARKINGS,
+  QUICK_SORT_MARKINGS,
+  MERGE_SORT_MARKINGS,
+} from "../../helpers";
 
 const Markings = ({ state: { currentAlgorithm } }) => {
   const [markings, setMarkings] = useState([]);
@@ -10,6 +14,8 @@ const Markings = ({ state: { currentAlgorithm } }) => {
       setMarkings(BUBBLE_SORT_MARKINGS);
     } else if (currentAlgorithm === "QuickSort") {
       setMarkings(QUICK_SORT_MARKINGS);
+    } else if (currentAlgorithm === "MergeSort") {
+      setMarkings(MERGE_SORT_MARKINGS);
     } else {
       setMarkings([]);
     }
