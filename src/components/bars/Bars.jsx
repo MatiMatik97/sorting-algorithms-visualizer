@@ -4,6 +4,7 @@ import DisplayBars from "./DisplayBars";
 import BubbleSort from "../../algorithms/BubbleSort";
 import QuickSort from "../../algorithms/QuickSort";
 import MergeSort from "../../algorithms/MergeSort";
+import HeapSort from "../../algorithms/HeapSort";
 
 export const resizeHandler = (barsAmount) => {
   const windowWidth = window.innerWidth;
@@ -89,6 +90,9 @@ const Bars = ({
         case "MergeSort":
           sortingTime = MergeSort.init(bars, stepTime, sortingOrder);
           break;
+        case "HeapSort":
+          sortingTime = HeapSort.init(bars, stepTime, sortingOrder);
+          break;
         default:
           return;
       }
@@ -104,8 +108,8 @@ const Bars = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSorting, currentAlgorithm]);
 
-  // choose mergesort algorithm on page load
-  useEffect(() => [...document.querySelectorAll(".list-item")][2].click(), []);
+  // choose heapsort algorithm on page load - dev
+  useEffect(() => [...document.querySelectorAll(".list-item")][3].click(), []);
 
   return <DisplayBars bars={bars} />;
 };

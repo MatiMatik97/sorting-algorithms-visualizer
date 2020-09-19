@@ -4,6 +4,7 @@ import {
   BUBBLE_SORT_MARKINGS,
   QUICK_SORT_MARKINGS,
   MERGE_SORT_MARKINGS,
+  HEAP_SORT_MARKINGS,
 } from "../../helpers";
 
 const Markings = ({ state: { currentAlgorithm } }) => {
@@ -16,6 +17,8 @@ const Markings = ({ state: { currentAlgorithm } }) => {
       setMarkings(QUICK_SORT_MARKINGS);
     } else if (currentAlgorithm === "MergeSort") {
       setMarkings(MERGE_SORT_MARKINGS);
+    } else if (currentAlgorithm === "HeapSort") {
+      setMarkings(HEAP_SORT_MARKINGS);
     } else {
       setMarkings([]);
     }

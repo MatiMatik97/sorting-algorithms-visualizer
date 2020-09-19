@@ -1,3 +1,4 @@
+// Basic
 export const
     BARS_BASIC_BG_COLOR = "#6ba4ee",
     BARS_SWAPPED_BG_COLOR = "#2cb978",
@@ -13,42 +14,53 @@ const BASIC_SORT_COLORS = {
     BARS_DONE_BG_COLOR
 };
 
+const BASIC_MARKINGS = [
+    { color: BARS_BASIC_BG_COLOR, title: "Basic" },
+    { color: BARS_SWAPPED_BG_COLOR, title: "Compare" },
+    { color: BARS_SWAP_BG_COLOR, title: "Swap" },
+    { color: BARS_DONE_BG_COLOR, title: "Done" },
+];
+
+// BubbleSort
 export const BUBBLE_SORT_COLORS = {
     ...BASIC_SORT_COLORS
 }
 
+export const BUBBLE_SORT_MARKINGS = BASIC_MARKINGS;
+
+// QuickSort
 export const QUICK_SORT_COLORS = {
     ...BASIC_SORT_COLORS,
     BARS_PIVOT_BG_COLOR
 }
-
-export const MERGE_SORT_COLORS = {
-    BARS_BASIC_BG_COLOR,
-    BARS_SWAP_BG_COLOR,
-    BARS_DONE_BG_COLOR,
-    BARS_OVERWRITE_BG_COLOR
-}
-
-const BASIC_MARKINGS = [
-    { color: BARS_BASIC_BG_COLOR, title: "Basic" },
-    { color: BARS_SWAPPED_BG_COLOR, title: "Swapped" },
-    { color: BARS_SWAP_BG_COLOR, title: "Compare" },
-    { color: BARS_DONE_BG_COLOR, title: "Done" },
-];
-
-export const BUBBLE_SORT_MARKINGS = BASIC_MARKINGS;
 
 export const QUICK_SORT_MARKINGS = [
     ...BASIC_MARKINGS,
     { color: BARS_PIVOT_BG_COLOR, title: "Pivot" },
 ];
 
+// MergeSort
+export const MERGE_SORT_COLORS = {
+    ...BASIC_SORT_COLORS,
+    BARS_OVERWRITE_BG_COLOR
+}
+
 export const MERGE_SORT_MARKINGS = [
     { color: BARS_BASIC_BG_COLOR, title: "Basic" },
-    { color: BARS_SWAP_BG_COLOR, title: "Compare" },
+    { color: BARS_SWAP_BG_COLOR, title: "Swap" },
     { color: BARS_DONE_BG_COLOR, title: "Done" },
     { color: BARS_OVERWRITE_BG_COLOR, title: "Overwrite" },
 ];
+
+// HeapSort
+export const HEAP_SORT_COLORS = {
+    BARS_BASIC_BG_COLOR,
+    BARS_SWAP_BG_COLOR,
+    BARS_DONE_BG_COLOR,
+    ...BASIC_SORT_COLORS
+}
+
+export const HEAP_SORT_MARKINGS = BASIC_MARKINGS;
 
 export const
     DEFAULT_STEP_TIME = 2000,

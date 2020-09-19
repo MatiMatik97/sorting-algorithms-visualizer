@@ -52,6 +52,8 @@ MergeSort.merge = (mainArray, leftIndex, centerIndex, rightIndex, copyArray) => 
                     i: i,
                     j: j
                 },
+                toSwap: true,
+                overwrite: false,
                 values: [k, copyArray[i]],
             });
 
@@ -62,6 +64,8 @@ MergeSort.merge = (mainArray, leftIndex, centerIndex, rightIndex, copyArray) => 
                     i: i,
                     j: j
                 },
+                toSwap: false,
+                overwrite: false,
                 values: [k, copyArray[j]],
             });
 
@@ -72,9 +76,11 @@ MergeSort.merge = (mainArray, leftIndex, centerIndex, rightIndex, copyArray) => 
     while (i <= centerIndex) {
         animations.push({
             compare: {
-                i: i,
+                i: k,
                 j: i
             },
+            toSwap: false,
+            overwrite: true,
             values: [k, copyArray[i]],
         });
 
@@ -84,9 +90,11 @@ MergeSort.merge = (mainArray, leftIndex, centerIndex, rightIndex, copyArray) => 
     while (j <= rightIndex) {
         animations.push({
             compare: {
-                i: j,
+                i: k,
                 j: j
             },
+            toSwap: false,
+            overwrite: true,
             values: [k, copyArray[j]],
         });
 
@@ -95,27 +103,35 @@ MergeSort.merge = (mainArray, leftIndex, centerIndex, rightIndex, copyArray) => 
 }
 
 MergeSort.animate = (barsAmount) => {
-    console.log(animations);
     const STEP_TIME = Math.round(_stepTime / barsAmount);
     let sortingTime = 0;
 
     for (let anim = 0; anim < animations.length; anim++) {
-        const { compare: { i, j }, values } = animations[anim];
+        const { compare: { i, j }, toSwap, overwrite, values } = animations[anim];
 
         setTimeout(() => {
             const displayBars = [...document.querySelectorAll('.display-bar')];
 
-            displayBars.map(displayBar => {
-                displayBar.style.backgroundColor = BARS_BASIC_BG_COLOR;
-                return displayBar;
-            });
+            if (!overwrite) {
+                displayBars.map(displayBar => {
+                    displayBar.style.backgroundColor = BARS_BASIC_BG_COLOR;
+                    return displayBar;
+                });
 
-            displayBars[i].style.backgroundColor = BARS_SWAP_BG_COLOR;
-            displayBars[j].style.backgroundColor = BARS_SWAP_BG_COLOR;
-            displayBars[values[0]].style.backgroundColor = BARS_OVERWRITE_BG_COLOR;
+                const color = toSwap ? BARS_SWAP_BG_COLOR : BARS_OVERWRITE_BG_COLOR;
+
+                displayBars[i].style.backgroundColor = color;
+                displayBars[j].style.backgroundColor = color;
+            }
+
+            const [index, { size }] = values;
 
             setTimeout(() => {
-                displayBars[values[0]].style.height = `${values[1].size}px`;
+                displayBars[index].style.height = `${size}px`;
+
+                const displaySize = [...document.querySelectorAll('.display-size')];
+
+                displaySize[index].innerHTML = size;
             }, Math.round(STEP_TIME / 2));
         }, anim * STEP_TIME);
 

@@ -92,6 +92,13 @@ const NavbarDisplay = ({
               >
                 MergeSort
               </li>
+              <li
+                className={`list-item
+                ${currentAlgorithm === "HeapSort" ? "list-item-active" : ""}`}
+                onClick={() => onClickChooseAlgorithm("HeapSort")}
+              >
+                HeapSort
+              </li>
             </ul>
           </div>
         </div>
