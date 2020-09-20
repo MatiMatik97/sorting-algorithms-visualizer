@@ -1,0 +1,80 @@
+.tips {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: grid;
+    place-items: center;
+}
+
+.tips__container {
+    width: 60vw;
+    min-width: 200px;
+    max-width: 900px;
+    max-height: 800px;
+    height: fit-content;
+    background-color: #e2f3f5;
+    border-radius: 10px;
+    border: 1px solid #7b6c74;
+    -webkit-box-shadow: 0px 0px 5px 0px #7b6c74;
+    -moz-box-shadow: 0px 0px 5px 0px #7b6c74;
+    box-shadow: 0px 0px 5px 0px #7b6c74;
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tips__container>h2 {
+    margin-bottom: 10px;
+}
+
+.tips__container>p {
+    text-align: justify;
+}
+
+.tips__container__checkbox {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tips__container__checkbox>input, .tips__container__checkbox>label {
+    cursor: pointer;
+}
+
+.tips__container__checkbox>input {
+    margin-right: 5px;
+}
+
+.tips__container>button {
+    padding: 5px 20px;
+    outline: none;
+    text-transform: uppercase;
+    background-color: #17b978;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #7b6c74;
+    transition: filter 200ms ease-in;
+    font-weight: 500;
+}
+
+.tips__container>button:hover {
+    filter: brightness(110%);
+}
+
+@media (max-width: 600px) {
+    .tips__container {
+        font-size: 0.8rem;
+    }
+}

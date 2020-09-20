@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import Main from "./components/main/Main";
 import Markings from "./components/markings/Markings";
+import Tips from "./components/tips/Tips";
 
 const App = () => {
   const initialState = {
@@ -52,6 +53,8 @@ const App = () => {
       <Navbar state={state} dispatch={dispatch} />
       <Main state={state} dispatch={dispatch} />
       <Markings state={state} />
+
+      <Tips />
     </div>
   );
 };
