@@ -7,23 +7,34 @@ const Tips = () => {
 
   const onChangeCheckbox = () => {
     setChecboxChecked((prevChecboxChecked) => {
-      localStorage.setItem("tips-show-again", prevChecboxChecked);
+      localStorage.setItem("sav-tips-show-again", prevChecboxChecked);
       return !prevChecboxChecked;
     });
   };
-
-  useEffect(() => {
-    const showAgain = Boolean(localStorage.getItem("tips-show-again"));
-    setShowTips(!showAgain);
-  }, []);
 
   const onClickCloseButton = () => {
     setShowTips(false);
   };
 
+  const onKeyDown = (e) => {
+    if (e.keyCode === 27) {
+      // ESC KEY
+      setShowTips(false);
+    }
+  };
+
+  useEffect(() => {
+    const showAgain = localStorage.getItem("sav-tips-show-again") === "false";
+    setShowTips(!showAgain);
+
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
     showTips && (
-      <div className="tips">
+      <div className="tips" id="tips">
         <div className="tips__container">
           <h2>Sorting Algorithms Visualizer</h2>
 
@@ -35,6 +46,25 @@ const Tips = () => {
             algorithm works but it's only visualization that can give some
             insights. It is possible that more algorithms will be added in the
             future.
+            <br />
+            <br />
+            Links:
+            <br />-{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/MatiMatik97"
+            >
+              GitHub
+            </a>
+            <br />-{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/mateusz-kozak-9b75201a2"
+            >
+              LinkedIn
+            </a>
           </p>
 
           <div className="tips__container__checkbox">

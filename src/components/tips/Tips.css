@@ -39,6 +39,10 @@
     text-align: justify;
 }
 
+.tips__container__link {
+    margin-top: 20px !important;
+}
+
 .tips__container__checkbox {
     margin-top: 60px;
     margin-bottom: 10px;
