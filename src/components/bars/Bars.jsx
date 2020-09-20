@@ -91,7 +91,7 @@ const Bars = ({
           sortingTime = MergeSort.init(bars, stepTime, sortingOrder);
           break;
         case "HeapSort":
-          sortingTime = HeapSort.init(bars, stepTime, sortingOrder);
+          sortingTime = HeapSort.init(bars, setBars, stepTime, sortingOrder);
           break;
         default:
           return;
@@ -109,7 +109,7 @@ const Bars = ({
   }, [isSorting, currentAlgorithm]);
 
   // choose heapsort algorithm on page load - dev
-  useEffect(() => [...document.querySelectorAll(".list-item")][3].click(), []);
+  // useEffect(() => [...document.querySelectorAll(".list-item")][3].click(), []);
 
   return <DisplayBars bars={bars} />;
 };

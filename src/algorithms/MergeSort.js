@@ -8,13 +8,13 @@ const { BARS_BASIC_BG_COLOR,
 
 const MergeSort = () => { }
 
-let _stepTime = 0;
-let _sortingOrder = "";
+let stepTime = 0;
+let sortingOrder = "";
 let animations = [];
 
-MergeSort.init = (bars, stepTime, sortingOrder) => {
-    _stepTime = stepTime;
-    _sortingOrder = sortingOrder;
+MergeSort.init = (bars, _stepTime, _sortingOrder) => {
+    stepTime = _stepTime;
+    sortingOrder = _sortingOrder;
     animations = [];
 
     const barsMain = [...bars];
@@ -45,8 +45,8 @@ MergeSort.merge = (mainArray, leftIndex, centerIndex, rightIndex, copyArray) => 
         const firstValue = copyArray[i].size;
         const secondValue = copyArray[j].size;
 
-        if ((_sortingOrder === "DESC" && firstValue > secondValue)
-            || (_sortingOrder === "ASC" && firstValue < secondValue)) {
+        if ((sortingOrder === "DESC" && firstValue > secondValue)
+            || (sortingOrder === "ASC" && firstValue < secondValue)) {
             animations.push({
                 compare: {
                     i: i,
@@ -103,7 +103,7 @@ MergeSort.merge = (mainArray, leftIndex, centerIndex, rightIndex, copyArray) => 
 }
 
 MergeSort.animate = (barsAmount) => {
-    const STEP_TIME = Math.round(_stepTime / barsAmount);
+    const STEP_TIME = Math.round(stepTime / barsAmount);
     let sortingTime = 0;
 
     for (let anim = 0; anim < animations.length; anim++) {

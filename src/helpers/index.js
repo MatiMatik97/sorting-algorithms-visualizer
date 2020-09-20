@@ -5,7 +5,8 @@ export const
     BARS_SWAP_BG_COLOR = "#107a8b",
     BARS_DONE_BG_COLOR = "#26d484",
     BARS_PIVOT_BG_COLOR = "#952e8f",
-    BARS_OVERWRITE_BG_COLOR = "#952e8f";
+    BARS_OVERWRITE_BG_COLOR = "#952e8f",
+    BARS_MAX_HEAP_BG_COLOR = "#952e8f";
 
 const BASIC_SORT_COLORS = {
     BARS_BASIC_BG_COLOR,
@@ -41,7 +42,9 @@ export const QUICK_SORT_MARKINGS = [
 
 // MergeSort
 export const MERGE_SORT_COLORS = {
-    ...BASIC_SORT_COLORS,
+    BARS_BASIC_BG_COLOR,
+    BARS_SWAP_BG_COLOR,
+    BARS_DONE_BG_COLOR,
     BARS_OVERWRITE_BG_COLOR
 }
 
@@ -57,10 +60,15 @@ export const HEAP_SORT_COLORS = {
     BARS_BASIC_BG_COLOR,
     BARS_SWAP_BG_COLOR,
     BARS_DONE_BG_COLOR,
-    ...BASIC_SORT_COLORS
+    BARS_MAX_HEAP_BG_COLOR
 }
 
-export const HEAP_SORT_MARKINGS = BASIC_MARKINGS;
+export const HEAP_SORT_MARKINGS = [
+    { color: BARS_BASIC_BG_COLOR, title: "Basic" },
+    { color: BARS_SWAP_BG_COLOR, title: "Swap" },
+    { color: BARS_DONE_BG_COLOR, title: "Done" },
+    { color: BARS_MAX_HEAP_BG_COLOR, title: "Max Heap" },
+];;
 
 export const
     DEFAULT_STEP_TIME = 2000,
